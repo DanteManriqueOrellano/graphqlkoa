@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\graphql",
+    "\\src\\graphql\\resolvers",
+    "\\src\\graphql\\resolvers\\moduleTic\\resolvers",
+    "\\src\\graphql\\resolvers\\moduleUsuario",
+    "\\src\\graphql\\resolvers\\moduleUsuario\\entity"
+  ],
+  "SelectedNode": "\\tsconfig.json",
+  "PreviewInSolutionExplorer": false
+}
