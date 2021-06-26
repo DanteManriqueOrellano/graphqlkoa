@@ -13,7 +13,7 @@ export class RegisterUserResolver {
 
     //@UseMiddleware(isAuth)
     @Mutation(() => Usuario)
-    async register(
+    async registerUser(
 
         @Args() user: Usuario,
 
