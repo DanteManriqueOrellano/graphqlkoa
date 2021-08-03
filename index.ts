@@ -10,7 +10,7 @@ import { schemas } from "./src/graphql/schemas/indexSchema";
 import { connectFireBase } from "./src/store/dataStore";
 const { Firestore } = require('@google-cloud/firestore');
 const { FirestoreStore } = require('@google-cloud/connect-firestore');
-const port = 3000
+const port = process.env.PORT || 3000
 const main = async () => {
     connectFireBase()
     const app = new Koa();
