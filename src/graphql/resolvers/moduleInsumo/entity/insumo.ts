@@ -1,5 +1,5 @@
 import { ArgsType, Field, InputType, ObjectType, registerEnumType } from "type-graphql";
-import { Collection, Type } from "fireorm";
+import { Collection } from "fireorm";
 
 export enum u_medida {
     UND="UND",

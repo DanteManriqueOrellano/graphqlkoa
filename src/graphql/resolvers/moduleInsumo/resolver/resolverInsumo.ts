@@ -1,4 +1,5 @@
-import { Args, Mutation, Resolver } from "type-graphql";
+import { Args, Mutation, Query, Resolver } from "type-graphql";
+
 import { getRepository } from "fireorm";
 import { Service } from "typedi";
 import { EInsumo } from "../entity/insumo";
@@ -17,14 +18,23 @@ export class Insumo {
         @Args() insumo: EInsumo,
 
     ): Promise<EInsumo> {
-        //const hashedPassword = await bcrypt.hash(user.password, 12);
-
-        const userRepository = getRepository(EInsumo);
-        const newInsumo = await userRepository.create({
-            insumo: insumo.insumo,
-            precio: insumo.precio,
-            umedida: insumo.umedida,
-        });
+        
+        const insumoRepository = getRepository(EInsumo);
+        const newInsumo = await insumoRepository.create(
+            {
+                insumo: insumo.insumo,
+                precio: insumo.precio,
+                umedida: insumo.umedida
+            }
+        );
         return newInsumo
+    }
+
+    @Query(()=>[EInsumo])
+    async listaTodosInsumos():Promise<EInsumo[]>
+    {
+        const insumoRepository = getRepository(EInsumo);
+        let insumos = await insumoRepository.find();
+        return insumos
     }
 }
