@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from "type-graphql";
+import { Args, Mutation, Query, Resolver,Arg } from "type-graphql";
 
 import { getRepository } from "fireorm";
 import { Service } from "typedi";
@@ -10,6 +10,7 @@ import { EInsumo } from "../entity/insumo";
 @Service({ global: true })
 @Resolver()
 export class Insumo {
+    insumoRepository = getRepository(EInsumo);
 
     //@UseMiddleware(isAuth)
     @Mutation(() => EInsumo)
@@ -19,8 +20,8 @@ export class Insumo {
 
     ): Promise<EInsumo> {
         
-        const insumoRepository = getRepository(EInsumo);
-        const newInsumo = await insumoRepository.create(
+        
+        const newInsumo = await this.insumoRepository.create(
             {
                 insumo: insumo.insumo,
                 precio: insumo.precio,
@@ -33,8 +34,19 @@ export class Insumo {
     @Query(()=>[EInsumo])
     async listaTodosInsumos():Promise<EInsumo[]>
     {
-        const insumoRepository = getRepository(EInsumo);
-        let insumos = await insumoRepository.find();
+        
+        let insumos = await this.insumoRepository.find();
         return insumos
     }
+
+    @Mutation(()=>String)
+    async eliminarInsumoById(
+        @Arg("id") id:string
+        ):Promise<string>{
+
+              this.insumoRepository.delete(id);
+              return "insumo Eliminado"
+
+
+    } 
 }

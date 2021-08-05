@@ -29,7 +29,19 @@ const main = async () => {
             }
         }
     });
-    app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+    app.use(cors({
+        origin: function(ctx) {
+          if (ctx.url === '/test') {
+            return false;
+          }
+          return '*';
+        },
+        exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+        maxAge: 5,
+        credentials: true,
+        allowMethods: ['GET', 'POST', 'DELETE'],
+        allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+      }));
 
     apolloServer.applyMiddleware({ app, path: '/joder', cors: true });
 
