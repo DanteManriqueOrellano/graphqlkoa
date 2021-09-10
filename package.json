@@ -34,6 +34,7 @@
     "firebase-admin": "^9.5.0",
     "fireorm": "^0.20.0",
     "graphql": "^15.5.0",
+    "graphql-subscriptions": "^1.2.1",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-router": "^10.0.0",

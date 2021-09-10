@@ -48,5 +48,18 @@ export class Insumo {
               return "insumo Eliminado"
 
 
-    } 
+    }
+    @Mutation(()=>String)
+    async actualizarInsumoById(
+        @Args() insumo: EInsumo
+    ):Promise<string>{
+        const uninsumo = await this.insumoRepository.findById(insumo.id);
+        uninsumo.insumo = insumo.insumo;
+        uninsumo.precio = insumo.precio;
+        uninsumo.umedida = insumo.umedida;
+
+        await this.insumoRepository.update(uninsumo);
+        
+        return "Insumo Eliminado"
+    }
 }
