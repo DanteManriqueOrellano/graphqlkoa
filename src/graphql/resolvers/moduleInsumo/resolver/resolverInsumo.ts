@@ -59,7 +59,7 @@ export class Insumo {
         uninsumo.umedida = insumo.umedida;
 
         await this.insumoRepository.update(uninsumo);
-        
-        return "Insumo Eliminado"
+
+        return "Insumo Actualizado"
     }
 }
