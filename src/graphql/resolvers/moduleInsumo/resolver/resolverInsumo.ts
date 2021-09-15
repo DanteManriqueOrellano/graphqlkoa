@@ -25,7 +25,8 @@ export class Insumo {
             {
                 insumo: insumo.insumo,
                 precio: insumo.precio,
-                umedida: insumo.umedida
+                umedida: insumo.umedida,
+                categoria: insumo.categoria
             }
         );
         return newInsumo
@@ -57,6 +58,7 @@ export class Insumo {
         uninsumo.insumo = insumo.insumo;
         uninsumo.precio = insumo.precio;
         uninsumo.umedida = insumo.umedida;
+        uninsumo.categoria = insumo.categoria
 
         await this.insumoRepository.update(uninsumo);
 
